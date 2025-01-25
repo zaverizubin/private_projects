@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+    <head>
+    <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width" name="viewport"/>
+    <!--[if !mso]><!-->
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!--<![endif]-->
+    <title></title>
+    <!--[if !mso]><!-->
+    <!--<![endif]-->
+    <style type="text/css" media="all">
+        .container {
+            max-width: 1034px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        button {
+            margin-bottom: 20px;
+        }
+        .pageheader {
+            margin-bottom: 60px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .subject {
+            margin-bottom: 40px;
+        }
+
+        a {
+            color: rgb(43, 137, 226);
+        }
+
+        button {
+            border-radius: 0;
+            border: 0;
+            padding: 10px 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+    <body>
+        <div th:replace="~{mail_header}"></div>
+        <div class="container">
+            <section class="pagebody">
+                <p th:text="'Thank you for choosing' + ${appName}"></p>
+                <p>To start using our awesome platform, please confirm your e-mail by clicking the button</p>
+                <a th:attr="href= ${url}" style="text-decoration: none;" target="_blank"><button>Confirm email</button></a>
+                <p>The link will expire in 48hrs</p>
+            </section>
+        </div>
+        <div th:replace="~{mail_footer}"></div>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+alwaysUseUtf8=true
+eclipse.preferences.version=1
+serverAddress=192.168.1.2
+serverPort=36556

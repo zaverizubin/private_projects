@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="width=device-width" name="viewport" />
+ <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <style type="text/css" media="all">
+    .container {
+      width: auto;
+      margin: 0 auto;
+      border: 2px solid black;
+      padding: 15px;
+      height: 1070px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 12px;
+
+    }
+
+    .th, .td, .tr {
+        padding: 5px;
+        text-align: left;
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+
+    .table {
+      border: 2px solid black;
+      max-width: 100%;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .row {
+      padding: 5px;
+      text-align: left;
+      border: 2px solid black;
+    }
+
+    table {
+      border: 2px solid black;
+      max-width: 100%;
+      width: 100%;
+    }
+
+
+
+   th, td, tr {
+      padding: 5px;
+      text-align: left;
+    }
+
+    .footer {
+      background-color: #380525;
+      color: #fff;
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div th:replace="~{report_header}"></div>
+
+    <h3 style='float: right;'>Candidate Assessment Report</h3>
+    <br /><br />
+
+    <h3 style="float: left; width: 100%; display: flex; font-size: 15px; margin-top: 3px;"><strong th:text="${assessmentName}"></strong></h3>
+
+    <table class="customTable">
+      <tbody>
+      <tr>
+        <td rowspan="7" style="width: 180px"><img th:attr="src='data:image/png;base64,' + ${candidatePhoto}" alt="Candidate Image" width="180px" /></td>
+      </tr>
+      <tr>
+          <td colspan="2"><strong th:text="${candidateName}"></strong></td>
+      </tr>
+      <tr>
+          <td colspan="2"><strong th:text="${candidateEmail}"></strong></td>
+      </tr>
+      <tr>
+          <td colspan="2"><strong  th:text="${candidateContactNumber}"></strong></td>
+      </tr>
+      <tr>
+        <td style="width: 135px;">Assessment Date :</td>
+         <td th:text="${startDate}"></td>
+      </tr>
+      <tr>
+        <td>Overall Score :</td>
+        <td th:text="${overallScore} + '%' "></td>
+      </tr>
+      <tr>
+        <td>Decision :</td>
+        <td th:text="${assessmentDecision}"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br /><br />
+
+  <table class="table">
+    <tbody>
+      <tr class="tr">
+          <th class="th">Assessment Block</th>
+          <th class="th">Candidate Score</th>
+          <th class="th">Group Average</th>
+      </tr>
+      <tr class="tr" th:each="assessmentBlockScore : ${assessmentBlockScores}">
+        <td class="td" th:text="${assessmentBlockScore.title}"></td>
+        <td class="td" th:text="${assessmentBlockScore.candidateScore} + '%'"></td>
+        <td class="td" th:text="${assessmentBlockScore.groupAvgScore} + '%'"></td>
+      </tr>
+     <tr class="tr">
+        <td class="td">Overall Score</td>
+        <td class="td" th:text="${candidateAverageScore} + '%' "></td>
+        <td class="td" th:text="${groupAverageScore} + '%' "></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br /><br />
+
+  <table class="customTable" th:if="${not #lists.isEmpty(questionComments)}">
+    <tbody >
+      <tr class="row" th:each="questionComment : ${questionComments}" th:if="${not #lists.isEmpty(${questionComments})}">
+         <td><strong th:text="'Question: ' + ${questionComment.question}"></strong></td>
+          <td><strong th:text="'Assessor Comments: ' + ${questionComment.comment}" ></strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br /><br />
+
+  <div th:replace="~{report_footer}"></div>
+
+</div>
+</body>
+</html>

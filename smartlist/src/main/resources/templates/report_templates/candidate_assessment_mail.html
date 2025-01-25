@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width" name="viewport"/>
+    <!--[if !mso]><!-->
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!--<![endif]-->
+    <title></title>
+    <!--[if !mso]><!-->
+    <!--<![endif]-->
+    <style type="text/css" media="all">
+        .container {
+            max-width: 1034px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        table.customTable {
+            width: 100%;
+            background-color: #FFFFFF;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-color: #FFFFFF;
+            border-style: solid;
+            color: #000000;
+        }
+
+        table.customTable td, table.customTable th {
+            border-width: 2px;
+            border-color: #FFFFFF;
+            border-style: solid;
+            padding: 5px;
+        }
+
+        table.customTable thead {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div th:replace="~{report_header_for_mail}"></div>
+
+    <div class="container">
+
+    <img src='cid:candidate-photo'  alt="Candidate Image" width="213px"/>
+
+    <table class="customTable">
+        <tbody>
+        <tr>
+            <td><strong>Name</strong></td>
+            <td th:text="${candidateName}"></td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td th:text="${candidateEmail}"></td>
+        </tr>
+        <tr>
+            <td>Contact Number</td>
+            <td th:text="${candidateContactNumber}"></td>
+        </tr>
+        <tr>
+            <td>Started On</td>
+            <td th:text="${startDate}"></td>
+        </tr>
+        <tr>
+            <td>Completion Date</td>
+            <td th:text="${endDate}"></td>
+        </tr>
+        <tr>
+            <td>Overall Score</td>
+            <td th:text="${overallScore}"></td>
+        </tr>
+        <tr>
+            <td>Decision</td>
+            <td th:text="${assessmentDecision}"></td>
+        </tr>
+        <tr>
+            <td th:text="'Candidate Average Score(' +  ${candidateAverageScore} + '% )'"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td th:text="'Group Average Score(' +  ${groupAverageScore} + '% )'"></td>
+            <td></td>
+        </tr>
+        <tr class="tr" th:each="assessmentBlockScore : ${assessmentBlockScores}">
+            <td class="td" th:text="${assessmentBlockScore.title}"></td>
+            <td class="td" th:text="'Candidate Score ' + ${assessmentBlockScore.candidateScore} + '%'"></td>
+            <td class="td" th:text="'Group Average Score ' + ${assessmentBlockScore.groupAvgScore} + '%'"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+    <div th:replace="~{report_footer}"></div>
+</body>
+</html>

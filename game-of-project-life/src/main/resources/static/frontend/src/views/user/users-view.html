@@ -1,0 +1,18 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../styles/shared-styles.html">
+<link rel="import" href="../../../bower_components/vaadin-grid/src/vaadin-grid.html">
+
+
+<dom-module id="users-view">
+  <template>
+	<vaadin-grid id="grid" theme="crud"></vaadin-grid>
+</template>
+   <script>
+        class UsersView extends Polymer.Element {
+            static get is() {
+                return 'users-view'
+            }
+        }
+        customElements.define(UsersView.is, UsersView);
+    </script>
+</dom-module>

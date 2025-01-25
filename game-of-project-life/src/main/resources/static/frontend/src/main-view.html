@@ -1,0 +1,17 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="components/app-navigation.html">
+
+<dom-module id="main-view">
+  	<template>
+  		<app-navigation id="appNavigation" nav-hidden$="[[navHidden]]"></app-navigation>
+      <slot></slot>
+   </template>
+   <script>
+        class MainView extends Polymer.Element {
+            static get is() {
+                return 'main-view'
+            }
+        }
+        customElements.define(MainView.is, MainView);
+    </script>
+</dom-module>
