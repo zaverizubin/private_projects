@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="width=device-width" name="viewport" />
+ <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <style type="text/css" media="all">
+    .container {
+      width: auto;
+      margin: 0 auto;
+      border: 2px solid black;
+      padding: 15px;
+      height: 1070px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 12px;
+
+    }
+
+    .th, .td, .tr {
+        padding: 5px;
+        text-align: left;
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+
+    .table {
+      border: 2px solid black;
+      max-width: 100%;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .row {
+      padding: 5px;
+      text-align: left;
+      border: 2px solid black;
+    }
+
+    table {
+      border: 2px solid black;
+      max-width: 100%;
+      width: 100%;
+    }
+
+   
+   
+   th, td, tr {
+      padding: 5px;
+      text-align: left;
+    }
+
+    .footer {
+      background-color: #380525;
+      color: #fff;
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+    {{> reportheader}}
+    <br>
+    <br>
+    <h3 style="float: left; width: 100%; display: flex; font-size: 15px; margin-top: 3px;"><strong>{{assessment_name}}</strong></h3>
+
+    <table class="customTable">
+      <tbody>
+        <tr>
+          <td rowspan="7" style="width: 180px"><img src='data:image/jpeg;base64,{{photo}}' alt="Candidate Image" width="180px" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>{{name}}</strong></td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>{{email}}</strong></td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>{{contact_number}}</strong></td>
+        </tr>
+        <tr>
+          <td style="width: 135px;">Assessment Date :</td>
+           <td>{{start_date}}</td>
+        </tr>
+        <tr>
+          <td>Overall Score :</td>
+          <td>{{overall_score}}%</td>
+        </tr>
+        <tr>
+          <td>Decision :</td>
+          <td>{{assessment_decision}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+     <table class="table">
+      <tbody>
+        <tr class="tr">
+            <th class="th">Assessment Block</th>
+            <th class="th">Candidate Score</th>
+            <th class="th">Group Average</th>
+        </tr>
+        {{#assessment_block_scores}}
+        <tr class="tr">
+          <td class="td">{{title}}</td>
+          <td class="td">{{candidate_score}}%</td>
+          <td class="td">{{group_average_score}}%</td>
+        </tr>
+        {{/assessment_block_scores}}
+       <tr class="tr">
+          <td class="td">Overall Score</td>
+          <td class="td">{{candidate_average_score}}%</td>
+          <td class="td">{{group_average_score}}%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+  {{#if questionComments}}  
+    <table class="customTable">
+      <tbody> 
+        {{#questionComments}}
+        <tr class="row">
+           <td><strong>Question: </strong>{{question.text}}</td>
+        </tr>
+        <tr class="row">
+          <td><strong>Assessor Comments: </strong>{{comment}}</td>
+        </tr>
+        {{/questionComments}}
+       
+      </tbody>
+    </table>
+    {{/if}}
+  </div>
+   {{> reportfooter}}
+  </div>
+</body>
+</html>

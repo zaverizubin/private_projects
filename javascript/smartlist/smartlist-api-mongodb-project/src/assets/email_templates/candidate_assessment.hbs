@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width" name="viewport"/>
+<!--[if !mso]><!-->
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!--<![endif]-->
+<title></title>
+<!--[if !mso]><!-->
+<!--<![endif]-->
+<style type="text/css" media="all">
+    .container {
+        max-width: 1034px;
+        width: 100%;
+        margin: 0 auto;
+    }
+   table.customTable {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #FFFFFF;
+  border-style: solid;
+  color: #000000;
+}
+
+table.customTable td, table.customTable th {
+  border-width: 2px;
+  border-color: #FFFFFF;
+  border-style: solid;
+  padding: 5px;
+}
+
+table.customTable thead {
+  background-color: #FFFFFF;
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+		
+      <img src='data:image/jpeg;base64,{{photo}}'  alt="Candidate Image" width="213px"/>
+
+      <table class="customTable">
+  <tbody>
+    <tr>
+      <td> <strong>Name</strong></td>
+      <td>{{name}}</td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td>{{email}}</td>
+    </tr>
+    <tr>
+      <td>Contact Number</td>
+      <td>{{contact_number}}</td>
+    </tr>
+    <tr>
+      <td>Started On</td>
+      <td>{{start_date}}</td>
+    </tr>
+    <tr>
+      <td>Completion Date</td>
+      <td>{{end_date}}</td>
+    </tr>
+    <tr>
+      <td>Overall Score</td>
+      <td>{{overall_score}}</td>
+    </tr>
+    <tr>
+      <td>Decision</td>
+      <td>{{assessment_decision}}</td>
+    </tr>
+    <tr>
+      <td>Candidate Average Score( {{candidate_average_score}}% )</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Group Average Score( {{group_average_score}}% )</td>
+	    <td></td>
+    </tr>
+		{{#assessment_block_scores}}
+			<tr>
+				<td>{{title}}</td>
+				<td>{{candidate_score}}% (Block Average Score{{group_average_score}}%)</td>
+			</tr>
+		{{/assessment_block_scores}}
+  </tbody>
+      </table>
+
+    </div>
+	
+    </div>
+</body>
+</html>
